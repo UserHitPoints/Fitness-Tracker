@@ -1,0 +1,55 @@
+body {
+    background-color: #1a1a2e;
+    color: white;
+    font-family: sans-serif;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #16213e;
+    align-items: center;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+.card {
+    background-color: #16213e;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.eyecatcher {
+    text-align: center;
+    font-size: 48px;
+    font-weight: bold;
+    color: #e94560;
+}
+
+a {
+    color: #e94560;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.link {
+display: block;
+text-align: center;
+padding: 15px;
+border-radius: 8px;
+margin-bottom: 10px;
+font-size: 30px;
+}
+
+.header {
+    font-size: 48px;
+    font-weight: bold;
+    color: #e94560;
+}

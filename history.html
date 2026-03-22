@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>History</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/history.css">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    </head>
+
+    <body>
+
+        <nav>
+            <a href="hub.html">Zurück zu Hub</a>
+            <h1>History</h1>
+        </nav>
+
+        <main>
+            <div class="card">
+                <h2>Übung auswählen</h2>
+                <select id="uebung-select">
+                <option value="">Übung wählen</option>
+                </select>
+            </div>
+
+            <div class="card">
+            <h2>Gewichtsverlauf</h2>
+            <canvas id="gewicht-chart"></canvas>
+            </div>
+        </main>
+
+        <script src="js/history.js"></script>
+    </body>
+</html>

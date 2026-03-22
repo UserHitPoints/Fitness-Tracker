@@ -7,9 +7,9 @@ body {
 nav {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 20px;
     background-color: #16213e;
-    align-items: center;
 }
 
 main {
@@ -23,33 +23,19 @@ main {
     background-color: #16213e;
     padding: 25px;
     border-radius: 12px;
-    text-align: center;
 }
 
-.eyecatcher {
-    text-align: center;
-    font-size: 48px;
-    font-weight: bold;
-    color: #e94560;
+select {
+    width: 20%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background-color: #1a1a2e;
+    color: white;
+    margin-top: 10px;
 }
 
 a {
-   color: orangered;
+    color: orangered;
     text-decoration: none;
-    font-size: 20px;
-}
-
-.link {
-display: block;
-text-align: center;
-padding: 15px;
-border-radius: 8px;
-margin-bottom: 10px;
-font-size: 30px;
-}
-
-.header {
-    font-size: 48px;
-    font-weight: bold;
-    color: #e94560;
 }

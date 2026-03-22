@@ -6,24 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/tracker.css">
     </head>
+    
+    <body>
 
         <nav>
         <a href="hub.html">Zurück zum Hub</a>
         <h1>Workout loggen</h1>
         </nav>
-    <body>
 
         <main>
-        <form id="workout-form">
-        <input type="text" id="übung" placeholder="Übung (z.B. Bankdrücken)" required>
-        <input type="number" id="gewicht" placeholder="Gewicht (kg)" required>
-        <input type="number" id="wiederholungen" placeholder="Wiederholungen" required>
+        <form id="workout_form" method = "post" action="php/tracker.php">
+        <input type="text" id="übung" name = "uebung" placeholder="Übung (z.B. Bankdrücken)" required>
+        <input type="number" id="gewicht" name = "gewicht" placeholder="Gewicht (kg)/ Minuten (M)" required>
+        <input type="number" id="wiederholungen" name = "wiederholungen" placeholder="Wiederholungen" required>
         <button type="submit">+ Satz hinzufügen</button>
         </form>
 
-        <div class="saved sets" id="saved sets">
+        <div class="saved_sets" id="saved_sets">
         <h2>Heutige Sätze</h2>
-        <ul id="sets list"></ul>
+        <ul id="sets_list"></ul>
         </div>
 
         <button id="finish">Workout abschließen</button>

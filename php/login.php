@@ -13,7 +13,7 @@ if (!$user) {
     echo "User nicht gefunden";
 } else if (password_verify($passwort, $user["passwort"])) {
     $_SESSION["user_id"] = $user["id"];
-    header("Location: ../hub.html");
+    header("Location: ../hub.php");
 
 } else {
     echo "passwort  falsch";

@@ -28,7 +28,7 @@ $workout_sets = $sendtodb->fetchAll(PDO::FETCH_ASSOC);
     <body>
 
         <nav>
-            <a href="hub.html">Zurück zu Hub</a>
+            <a href="hub.php">Zurück zu Hub</a>
             <h1>History</h1>
         </nav>
 

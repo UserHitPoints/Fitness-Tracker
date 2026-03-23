@@ -28,9 +28,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
         const labels = [];
         const datas = [];
+        const wiederholungen = [];
         for (let i = 0; i < filteredoption.length; i++) {
             labels.push(filteredoption[i].datum);
             datas.push(parseFloat(filteredoption[i].gewicht));
+            wiederholungen.push(parseInt(filteredoption[i].wiederholungen));
         }
 
         if (chart) {
@@ -41,15 +43,19 @@ document.addEventListener("DOMContentLoaded", function() {
             type: "bar",
             data: {
                 labels: labels,
-                datasets: [{
-                    label: "Gewicht (kg)",
-                    data: datas,
-                    backgroundColor: "#e94560"
-                }]
+                datasets: [
+                    {
+                        label: "Gewicht (kg)",
+                        data: datas,
+                        backgroundColor: "#e94560"
+                    },
+                    {
+                        label: "Wiederholungen",
+                        data: wiederholungen,
+                        backgroundColor: "#4560e9"
+                    }
+                ]
             }
         });
-        console.log(filteredoption);
-        console.log(labels);
-        console.log(datas);
     });
 });

@@ -17,8 +17,8 @@ requestdb.onsuccess = (event) => {      //if created succ. saves event..result i
   console.log("IndexedDB bereit")
 };
 
-objectStore.createIndex("name", "name", { unique: false });  //xxx
-objectStore.createIndex("email", "email", { unique: true }); //xxx
+objectStore.createIndex("name", "name", { unique: false });  //xxx?
+objectStore.createIndex("email", "email", { unique: true }); //xxx?
 
 function saveOffline(uebung,gewicht,wiederholungen) {
     const transaction = db.transaction(["workouts"], "readwrite");      //canal to workouts read and write permissions
@@ -28,7 +28,7 @@ function saveOffline(uebung,gewicht,wiederholungen) {
         uebung : uebung,
         gewicht: gewicht,
         wiederholungen : wiederholungen,
-        datum: new Date().split("T")[0],      // date = date form today toIsoString converts to iso .split("t") splits date from time (1 array 2 objects) [0] date index -> 0
+        datum: new Date().toISOString().split("T")[0],      // new Date() = date form today ToIsoString converts date into Iso Format (readability fpor backend) split("t") splits date from time (1 array 2 objects) [0] date index -> 0
         synced: false       // to check if data has been synced with live db 
     })
 }

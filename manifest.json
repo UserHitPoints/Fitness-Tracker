@@ -1,7 +1,7 @@
 {
     "name": "Beef Cake",
     "short_name": "BeefCake",
-    "start_url": "/fitness-tracker/login.html",
+    "start_url": "/fitness-tracker1/login.html",
     "display": "standalone",
     "background_color": "#1a1a2e",
     "theme_color": "#e94560",

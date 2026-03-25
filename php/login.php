@@ -16,6 +16,6 @@ if (!$user) {
     header("Location: ../hub.php");
 
 } else {
-    echo "passwort  falsch";
+    header("location: ../login.html");
 }
 ?>

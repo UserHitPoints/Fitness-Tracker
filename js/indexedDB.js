@@ -45,21 +45,24 @@ function SyncData() {
         console.log("unsynced workouts") 
         workouts.forEach(function(workout) {        // for loop through workouts define workouts[i] as workout
           console.log("send to php")
-            fetch("/fitness-tracker1/php/tracker.php", {
+            fetch("/fitness-tracker1/php/tracker.php", {      // sending to tracker.php
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(workout)     //stringify for js readabilty
+                headers: { "Content-Type": "application/json" },    //sendin in json format
+                body: JSON.stringify(workout)     // workouts to readable text
             }).then(function(response) {
                 console.log("php calling back", response.status)
                 
                 const transactionRW = db.transaction("workouts", "readwrite");    //RW readwrite to overwrite sync status    
                 const store2 = transactionRW.objectStore("workouts");
-                workout.synced = true;    //marking as synced
-                store2.put(workout);    //data converts
-                console.log("hat funktioniert")
+                if (response.ok) {
+                    store2.delete(workout.id);
+                    console.log("Synced und gelöscht!");
+                }
             });
         });
     };
 }
 
+console.log("automatic sync init")
 window.addEventListener("online", SyncData);
+console.log("synced automatically")

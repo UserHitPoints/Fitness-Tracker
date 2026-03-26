@@ -25,7 +25,6 @@ document.addEventListener("DOMContentLoaded",function(){
             console.log("online", navigator.onLine);
         }else {
             console.log("offline")
-            console.log("saveOffline:", typeof saveOffline);
             saveOffline(uebungen,gewicht,wiederholungen);
             console.log("wird aufgerufen");
             alert("offline");

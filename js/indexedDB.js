@@ -17,9 +17,6 @@ requestdb.onsuccess = (event) => {      //if created succ. saves event..result i
   console.log("IndexedDB bereit")
 };
 
-objectStore.createIndex("name", "name", { unique: false });  //xxx?
-objectStore.createIndex("email", "email", { unique: true }); //xxx?
-
 function saveOffline(uebung,gewicht,wiederholungen) {
     const transaction = db.transaction(["workouts"], "readwrite");      //canal to workouts read and write permissions
     const store = transaction.objectStore("workouts");          // stores object form transaction acts as paralell
@@ -35,14 +32,34 @@ function saveOffline(uebung,gewicht,wiederholungen) {
 
 
 function SyncData() {
+  console.log("sync start")
     if (!navigator.onLine) return; // navigator = objects with infos about browser/ .online = bool 
+        console.log("no Conn")
+        const transaction = db.transaction("workouts", "readonly");      //transaction open with readonly no inputs
+        const store = transaction.objectStore("workouts");       //stores from transaction
+        const request = store.getAll();     //req all objects from store
 
-    const transaction = db.transaction("workouts", "readonly");      //transaction open with readonly no inputs
-    const store = tx.objectStore("workouts");       //stores from transaction
-    const request = store.getAll();     //req all objects from store
+    request.onsuccess = (event) => {        //fires wehen req -> succ.
+        console.log("all workous",request.result) 
+        const workouts = request.result.filter(synced => !synced.synced);       // filter through workouts for false synced objects
+        console.log("unsynced workouts") 
+        workouts.forEach(function(workout) {        // for loop through workouts define workouts[i] as workout
+          console.log("send to php")
+            fetch("/fitness-tracker1/php/tracker.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(workout)     //stringify for js readabilty
+            }).then(function(response) {
+                console.log("php calling back", response.status)
+                
+                const transactionRW = db.transaction("workouts", "readwrite");    //RW readwrite to overwrite sync status    
+                const store2 = transactionRW.objectStore("workouts");
+                workout.synced = true;    //marking as synced
+                store2.put(workout);    //data converts
+                console.log("hat funktioniert")
+            });
+        });
+    };
+}
 
-    request.onsuccess = (event) => {        //fires wehen req -> succ. 
-    const workouts = request.result.filter(synced => !synced.synced);       // filter through workouts for false synced objects 
-    
-}
-}
+window.addEventListener("online", SyncData);

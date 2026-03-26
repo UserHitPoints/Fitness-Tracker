@@ -23,7 +23,7 @@ $workout_sets = $sendtodb->fetchAll(PDO::FETCH_ASSOC);
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/history.css">
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-          <link rel="manifest" href="/fitness-tracker/manifest.json">
+          <link rel="manifest" href="/fitness-tracker1/manifest.json">
     </head>
 
     <body>

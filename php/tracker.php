@@ -1,5 +1,12 @@
 <?php
 session_start();
+
+// Prüfe ob JSON geschickt wurde (offline sync)
+$input = json_decode(file_get_contents("php://input"), true);
+if ($input) {
+    $_POST = $input;
+}
+
 require_once "db.php";
 
 $user_id = $_SESSION["user_id"];

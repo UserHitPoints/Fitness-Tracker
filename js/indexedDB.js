@@ -33,11 +33,14 @@ function saveOffline(uebung,gewicht,wiederholungen) {
 
 function SyncData() {
   console.log("sync start")
-    if (!navigator.onLine) return; // navigator = objects with infos about browser/ .online = bool 
-        console.log("no Conn")
-        const transaction = db.transaction("workouts", "readonly");      //transaction open with readonly no inputs
-        const store = transaction.objectStore("workouts");       //stores from transaction
-        const request = store.getAll();     //req all objects from store
+    if (!navigator.onLine) {
+        console.log("no Conn");
+        return; // navigator = objects with infos about browser/ .online = bool 
+    }
+
+    const transaction = db.transaction("workouts", "readonly");      //transaction open with readonly no inputs
+    const store = transaction.objectStore("workouts");       //stores from transaction
+    const request = store.getAll();     //req all objects from store
 
     request.onsuccess = (event) => {        //fires wehen req -> succ.
         console.log("all workous",request.result) 

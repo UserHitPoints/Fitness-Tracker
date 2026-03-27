@@ -10,13 +10,14 @@ $sendtodb = $pdo -> prepare($sql);
 $sendtodb -> execute([$user_id,$datum]);
 $workout_id = $pdo->lastInsertId();
 
-$uebung = $_POST["uebung"];
-$gewicht = $_POST["gewicht"];
-$wiederholungen = $_POST["wiederholungen"];
+$data = json_decode(file_get_contents('php://input'), true);
+
+$uebung = $data["uebung"] ?? $_POST["uebung"];
+$gewicht = $data["gewicht"] ?? $_POST["gewicht"];
+$wiederholungen = $data["wiederholungen"] ?? $_POST["wiederholungen"];
 
 $sql = "INSERT INTO workout_sets (workout_id,uebung,gewicht,wiederholungen) VALUES (?,?,?,?)";
 $sendtodb = $pdo -> prepare($sql);
 $sendtodb->execute([$workout_id, $uebung, $gewicht, $wiederholungen]);
-
 header("Location: ../tracker.html");
 ?>
